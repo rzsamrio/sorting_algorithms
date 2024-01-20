@@ -10,15 +10,15 @@ void bubble_sort(int *array, size_t size)
 {
 	int *bus, *whl, *end, tmp;
 
-	bus = &array[0]; /* Capture element */
-	end = &array[size]; /* Last Element */
-	whl = bus + 1;
+	bus = &array[0]; /* set bus to first element */
+	end = &array[size]; /* specify end */
+	whl = bus + 1; /* set wheels to next element */
 
-	while (whl != bus)
+	while (whl != bus)	/* While there's space for motion */
 	{
 		while (whl < end)
 		{
-			if (*bus > *whl)
+			if (*bus > *whl)	/* Swap weights if bus is heavier than wheel */
 			{
 				tmp = *whl;
 				*whl = *bus;
@@ -27,21 +27,20 @@ void bubble_sort(int *array, size_t size)
 				whl++;
 				print_array(array, size);
 			}
-			else if (*bus < *whl)
-			{
-				bus = whl;
-				whl++;
-			}
-			else
+			else /* Else keep moving */
 			{
 				bus++;
 				whl++;
 			}
 		}
+		/*
+		 * Restrict path after every iteration
+		 * Locks the sorted set
+		 */
 		end--;
-		bus = &array[0];
+		bus = &array[0]; /* Restart conditions */
 		whl = bus + 1;
-		if (whl == end)
+		if (whl == end)	/* End conditions */
 			break;
 	}
 }
