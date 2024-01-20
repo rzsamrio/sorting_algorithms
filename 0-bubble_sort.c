@@ -1,5 +1,5 @@
 #include "sort.h"
-
+#include <stdio.h>
 /**
  * bubble_sort - Sorts an array based on the bubble sort algorithm
  * @array: Array to sort
@@ -40,7 +40,7 @@ void bubble_sort(int *array, size_t size)
 		end--;
 		bus = &array[0]; /* Restart conditions */
 		whl = bus + 1;
-		if (whl == end)	/* End conditions */
+		if (whl == end || bus == end)	/* End conditions */
 			break;
 	}
 }
