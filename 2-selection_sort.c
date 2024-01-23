@@ -1,7 +1,9 @@
 #include "sort.h"
-#include <stdio.h>
+
 /**
- *
+ * selection_sort - Sorts an array using selection sort
+ * @array: Array to sort
+ * @size: size of the array to sort
  */
 
 void selection_sort(int *array, size_t size)
@@ -17,6 +19,7 @@ void selection_sort(int *array, size_t size)
 				tmp = array[i];
 				array[i] = array[j];
 				array[j] = tmp;
+				print_array(array, size);
 			}
 		}
 	}

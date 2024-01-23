@@ -1,46 +1,46 @@
 #include "sort.h"
 
 /**
- *
+ * insertion_sort_list - sorts a linked list using insertion sort algorithm
+ * @list: address of the head node
  */
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *ptr;
-	listint_t *p_ptr;
+	listint_t *p_ptr, *ptr = *list;
 	int semi_sorted;
 
 	semi_sorted = 1;
-	ptr = *list;
 	p_ptr = ptr->prev;
 	while (ptr)
 	{
 		if (p_ptr)
 		{
-			while(p_ptr->prev)
+			while (p_ptr->prev)
 			{
 				if (p_ptr->n < p_ptr->prev->n)
-					{
-						swap_nodes(p_ptr->prev, p_ptr, list);
-						print_list(*list);
-						semi_sorted = 0;
-					}
-					else
-						break;
-			}
-		   semi_sorted = 1;
-		}
-		if (ptr->next)
-		{
-				if (ptr->n > ptr->next->n)
 				{
-					swap_nodes(ptr, ptr->next, list);
+					swap_nodes(p_ptr->prev, p_ptr, list);
 					print_list(*list);
 					semi_sorted = 0;
 				}
-				p_ptr = ptr->prev;
-				if (semi_sorted)
-					ptr = ptr->next;
+				else
+					break;
+			}
+		   semi_sorted = 1;
+		}
+
+		if (ptr->next)
+		{
+			if (ptr->n > ptr->next->n)
+			{
+				swap_nodes(ptr, ptr->next, list);
+				print_list(*list);
+				semi_sorted = 0;
+			}
+			p_ptr = ptr->prev;
+			if (semi_sorted)
+				ptr = ptr->next;
 		}
 		else
 			if (semi_sorted)
@@ -48,9 +48,15 @@ void insertion_sort_list(listint_t **list)
 	}
 }
 
-void swap_nodes(listint_t *current, listint_t *next, listint_t **head) 
+/**
+ * swap_nodes - swaps 2 nodes in a list
+ * @current: the current node
+ * @next: the next node to swap with
+ * @head: address of the head node
+ */
+void swap_nodes(listint_t *current, listint_t *next, listint_t **head)
 {
-	if (!current || !next) 
+	if (!current || !next)
 		return;
 
 	/* Update pointers for nodes before and after the swapped nodes */
