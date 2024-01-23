@@ -9,6 +9,8 @@ void bubble_sort(int *array, size_t size)
 {
 	int *bus, *whl, *end, tmp;
 
+	if (size < 2)
+		return;
 	bus = &array[0]; /* set bus to first element */
 	end = &array[size]; /* specify end */
 	whl = bus + 1; /* set wheels to next element */

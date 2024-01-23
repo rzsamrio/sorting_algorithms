@@ -10,8 +10,11 @@ void insertion_sort_list(listint_t **list)
 	listint_t *p_ptr, *ptr = *list;
 	int semi_sorted;
 
+	if (!(*list)->next)
+		return;
 	semi_sorted = 1;
 	p_ptr = ptr->prev;
+
 	while (ptr)
 	{
 		if (p_ptr)
@@ -21,7 +24,6 @@ void insertion_sort_list(listint_t **list)
 				if (p_ptr->n < p_ptr->prev->n)
 				{
 					swap_nodes(p_ptr->prev, p_ptr, list);
-					print_list(*list);
 					semi_sorted = 0;
 				}
 				else
@@ -29,13 +31,11 @@ void insertion_sort_list(listint_t **list)
 			}
 		   semi_sorted = 1;
 		}
-
 		if (ptr->next)
 		{
 			if (ptr->n > ptr->next->n)
 			{
 				swap_nodes(ptr, ptr->next, list);
-				print_list(*list);
 				semi_sorted = 0;
 			}
 			p_ptr = ptr->prev;
@@ -72,4 +72,5 @@ void swap_nodes(listint_t *current, listint_t *next, listint_t **head)
 	/* Swap connections between the two nodes */
 	current->prev = next;
 	next->next = current;
+	print_list(*head);
 }
