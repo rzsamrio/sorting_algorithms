@@ -10,8 +10,6 @@ void insertion_sort_list(listint_t **list)
 	listint_t *p_ptr, *ptr = *list;
 	int semi_sorted;
 
-	if (!(*list)->next)
-		return;
 	semi_sorted = 1;
 	p_ptr = ptr->prev;
 
