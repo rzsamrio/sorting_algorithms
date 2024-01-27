@@ -10,7 +10,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *p_ptr, *ptr = *list;
 	int semi_sorted;
 
-	if (!list)
+	if (list == NULL || *list == NULL)
 		return;
 
 	semi_sorted = 1;
