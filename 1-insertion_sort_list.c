@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * insertion_sort_list - sorts a linked list using insertion sort algorithm
@@ -7,15 +8,15 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *p_ptr, *ptr = *list;
+	listint_t *p_ptr, *ptr;
 	int semi_sorted;
 
 	if (list == NULL || *list == NULL)
 		return;
 
 	semi_sorted = 1;
+	ptr = *list;
 	p_ptr = ptr->prev;
-
 	while (ptr)
 	{
 		if (p_ptr)
